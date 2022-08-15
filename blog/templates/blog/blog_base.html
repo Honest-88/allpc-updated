@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="author" content="ALL PC Solutions">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="All PC Solutions - Download Free Resources To Unleash Your Creative Power ...! Amazing site to download free Premium and Paid Creative resources: softwares, plugins, VFX, Graphic Design, HTML templates, WordPress Themes Online Tutorials and much more ... Download Online Paid Course for free download from platforms like Udemy, Skillshare, Pluralsight, Linkedin, Coursera, Frontend Masters, CodewithMosh, ZeroToMastery, Coding Ninjas, Academind, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses. Free download free Windows OS, Mac Os Apps, Plugins and softwares. Free download Premium VFX or Motion Graphics Templates. Motion Graphics Templates DaVinci Resolve, After Effects, CENEMA 4D, Adobe Premiere Pro, Magix Vegas Pro, Blender. Free download Premium Templates. Graphics Design Templates Photoshop Psd, Adobe Illustrator, Corel Draw, Adobe InDesign, Power Point Infographics. Free download Premium WordPress Themes, HTML Templates" />
+  <meta property="og:title" content="Free download Premium WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free">
+
+  <meta property="og:type" content="WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free, Udemy courses free, Skillshare courses free, Pluralsight courses free, Linkedin courses free, Coursera courses free, Frontend Masters courses free, CodewithMosh courses free, ZeroToMastery courses free, Coding Ninjas courses free, Academind courses free, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses, DaVinci Resolve Motion Graphics Templates, After Effects Motion Graphics Templates, CENEMA 4D Motion Graphics Templates, Adobe Premiere Pro Motion Graphics Templates, Magix Vegas Pro Templates, Blender, Graphics Templates Photoshop Psd, Adobe Illustrator Graphics Templates , Corel Draw Graphics Templates , Adobe InDesign Graphics Templates , Power Point Infographics">
+  <meta property="og:url" content="www.allpcsolutions.net, allpcsolutions.net, allpcsolutions, www.allpcsolutions.net ">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {% block stylesheet %}
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+  rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'dev/images/favicon.ico' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+  <link rel="stylesheet" href="{% static 'dev/uikit/styles/uikit.css' %}" />
+  <link rel="stylesheet" href="{% static 'dev/styles/app.css' %}" />
+
+  
+  {% endblock stylesheet %}
+
+  <title>AllPCSolutions.net|download Premium and Paid Creative resources free {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container container--narrow">
+      <a href="{% url 'blog:home' %}" class="header__logo">
+        <img src="{% static 'dev/images/logo.jpg' %}" alt="allpcsolutions Logo" />
+      </a>
+      <nav class="header__nav">
+        <input type="checkbox" id="responsive-menu" />
+        <label for="responsive-menu" class="toggle-menu">
+          <span>Menu</span>
+          <div class="toggle-menu__lines"></div>
+        </label>
+        <ul class="header__menu">  
+           
+          <li class="header__menuItem"><a href="{% url 'extras:privacy' %}">Privacy Policy</a></li>
+          <li class="header__menuItem"><a href="{% url 'extras:dmca' %}">DMCA</a></li>
+          <li class="header__menuItem"><a href="{% url 'extras:terms' %}">Terms Of Use</a></li>
+          <li class="header__menuItem"><a href="{% url 'extras:about' %}">About Us</a></li>
+          <li class="header__menuItem"><a href="{% url 'extras:contact' %}">Contact</a></li>
+
+          {% if user.is_superuser %}
+          <li class="header__menuItem"><a href="{% url 'blog:dashboard_home' %}" class="btn btn--sub">Dashboard</a></li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+          <li class="header__menuItem"><a href="{% url 'blog:logout' %}" class="btn btn--sub">Logout</a></li>
+          {% else %}
+          <li class="header__menuItem"><a href="{% url 'blog:login' %}" class="btn btn--sub">Login</a></li>
+          <li class="header__menuItem"><a href="{% url 'blog:register' %}" class="btn btn--sub">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+<br><br><br>
+  <!-- Main Section -->
+  <main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+
+            <h5 style="color: blue;">
+                Welcome To AllPCSolutions.net
+                Download Free Resources To Unleash Your Creative Power ...!
+            </h5>      
+
+            {% block messages %}
+            <div class="row">
+            <div class="col-md-12">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-center font-weight-bold alert alert-dismissible fade show
+                            {% if message.level_tag == 'error' %}
+                            alert-danger
+                            {% else %}
+                            alert-{{ message.tags }}
+                            {% endif %}">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endblock messages %}
+        <div class="hero-section__box">
+          <h4>Search for What you're looking for here...</h4>
+        </div>      
+        <div class="hero-section__search">
+          <form class="form" method="get" action="{% url 'blog:article_search_list_view' %}" >
+            <div class="form__field">
+              <label for="formInput#search">Search what you're looking for... </label>
+              <input class="input input--text" id="formInput#search" type="text" name="q"
+                placeholder="Search what you're looking for..." />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+            
+          </form>
+        </div>
+        <br><br>
+      </div>
+    </section>
+
+    {% block content %}
+
+
+    {% endblock content %}
+    
+    
+  </main>
+  {% block footer %}
+<!-- Start Footer Area -->
+<footer class="footer-area">
+    <div class="container">
+        <div class="subscribe-area">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12">
+                    <h2>Thank you for visiting All Pc Solutions, remember to create an Account</h2>
+                </div>
+
+                <div class="col-lg-7 col-md-12">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">           
+                    <p>Always make sure to check out your Telegram for daily Updates from Us: Amazing Staff Everyday</p>
+                    <a href="https://t.me/allpcsolutions">
+                      <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">Join Our Telegram Channel For Daily Updates</button>
+                      <i class='fa fa-telegram fa-2x'></i>
+                    </a>
+                   
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <ul>
+                      <li><a href="{% url 'extras:privacy' %}">Privacy Policy</a></li>
+                      <li><a href="{% url 'extras:dmca' %}">Terms & Conditions</a></li>
+                      <li><a href="{% url 'extras:terms' %}">TTerms Of Use</a></li>
+
+                  </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <p class="text-center py-4 mb-0"> Copyright &copy;<script>document.write(new Date().getFullYear());</script> || Developped By: <a
+                        href="https://allpcsolutions.net">AllPCSolutions.net -  All rights reserved</a>
+                </p>
+                </div>
+
+                
+            </div>
+            <br><br><br><br>
+        </div>
+    </div>
+    
+</footer>
+<!-- End Footer Area -->
+{% endblock footer %}
+</body>
+
+</html>

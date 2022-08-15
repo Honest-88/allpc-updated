@@ -1,0 +1,102 @@
+{% extends 'blog/blog_base.html' %}
+<meta charset="utf-8">
+<meta name="author" content="ALL PC Solutions">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="All PC Solutions - Download Free Resources To Unleash Your Creative Power ...! Amazing site to download free Premium and Paid Creative resources: softwares, plugins, VFX, Graphic Design, HTML templates, WordPress Themes Online Tutorials and much more ... Download Online Paid Course for free download from platforms like Udemy, Skillshare, Pluralsight, Linkedin, Coursera, Frontend Masters, CodewithMosh, ZeroToMastery, Coding Ninjas, Academind, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses. Free download free Windows OS, Mac Os Apps, Plugins and softwares. Free download Premium VFX or Motion Graphics Templates. Motion Graphics Templates DaVinci Resolve, After Effects, CENEMA 4D, Adobe Premiere Pro, Magix Vegas Pro, Blender. Free download Premium Templates. Graphics Design Templates Photoshop Psd, Adobe Illustrator, Corel Draw, Adobe InDesign, Power Point Infographics. Free download Premium WordPress Themes, HTML Templates" />
+<meta property="og:title" content="Free download Premium WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free">
+
+<meta property="og:type" content="WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free, Udemy courses free, Skillshare courses free, Pluralsight courses free, Linkedin courses free, Coursera courses free, Frontend Masters courses free, CodewithMosh courses free, ZeroToMastery courses free, Coding Ninjas courses free, Academind courses free, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses, DaVinci Resolve Motion Graphics Templates, After Effects Motion Graphics Templates, CENEMA 4D Motion Graphics Templates, Adobe Premiere Pro Motion Graphics Templates, Magix Vegas Pro Templates, Blender, Graphics Templates Photoshop Psd, Adobe Illustrator Graphics Templates , Corel Draw Graphics Templates , Adobe InDesign Graphics Templates , Power Point Infographics">
+<meta property="og:url" content="www.allpcsolutions.net, allpcsolutions.net, allpcsolutions, www.allpcsolutions.net ">
+
+{% block title %}
+
+    Author
+{% endblock title %}
+
+
+{% block content %}
+    <div class="slider display-table center-text"
+                 style="background-image: url({{ author.profile.banner_image.url }});
+                    background-size: contain;
+                 height: 400px; width: 100%;">
+		<h1 class="title display-table-cell cell-color">
+            <b>{{ author.username }}</b></h1>
+	</div><!-- slider -->
+
+	<section class="blog-area section">
+		<div class="container">
+           {% if articles %}
+			<div class="row">
+                {% for article in articles %}
+				<div class="col-lg-4 col-md-6">
+					<div class="card h-100">
+						<div class="single-post post-style-1">
+							<div class="blog-image">
+                                <img src="{{ article.image.url }}"
+                                     width="330" height="220"
+                                     alt="Blog Image">
+                            </div>
+
+							<a class="avatar" href="{% url 'blog:author_articles' article.author.username %}">
+                                <img src="{{ article.author.profile.image.url }}"
+                                                            alt="Profile Image" class="profile-image">
+                            </a>
+
+							<div class="blog-info">
+
+								<h4 class="title"><a href="{{ article.get_absolute_url }}"><b>{{ article.title }}</b></a></h4>
+
+								<ul class="post-footer">
+									<li><a><i class="ion-ios-clock"></i>{{ article.read_time }} min{{ article.read_time|pluralize }} read</a></li>
+									<li><i class="ion-chatbubbles"></i>{{ article.comments.count }}</li>
+									<li><i class="ion-eye"></i>{{ article.views }}</li>
+								</ul>
+
+							</div><!-- article-info -->
+
+						</div><!-- single-post -->
+					</div><!-- card -->
+				</div><!-- col-lg-4 col-md-6 -->
+              {% endfor %}
+			</div><!-- row -->
+            {% else %}
+              <center><div class="alert alert-info"><b>No Articles</b></div></center>
+           {% endif %}
+
+           
+                {# Pagination for article post #}
+            {% if is_paginated %}
+
+                {# Displays previous pages #}
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                    <a class="btn btn-outline-info mb-4"
+                       href="?page={{ page_obj.previous_page_number }}">Previous
+                    </a>
+                {% endif %}
+
+                {# Displays current page #}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                 {% endfor %}
+
+                {# Displays next pages #}
+               {% if page_obj.has_next %}
+                    <a class="btn btn-outline-info mb-4"
+                       href="?page={{ page_obj.next_page_number }}">Next
+                    </a>
+                    <a class="btn btn-outline-info mb-4"
+                       href="?page={{ page_obj.paginator.num_pages }}">Last
+                    </a>
+                {% endif %}
+
+            {% endif %}
+
+		</div><!-- container -->
+	</section><!-- section -->
+
+{% endblock content %}

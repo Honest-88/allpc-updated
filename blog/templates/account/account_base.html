@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta name="author" content="ALL PC Solutions">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="All PC Solutions - Download Free Resources To Unleash Your Creative Power ...! Amazing site to download free Premium and Paid Creative resources: softwares, plugins, VFX, Graphic Design, HTML templates, WordPress Themes Online Tutorials and much more ... Download Online Paid Course for free download from platforms like Udemy, Skillshare, Pluralsight, Linkedin, Coursera, Frontend Masters, CodewithMosh, ZeroToMastery, Coding Ninjas, Academind, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses. Free download free Windows OS, Mac Os Apps, Plugins and softwares. Free download Premium VFX or Motion Graphics Templates. Motion Graphics Templates DaVinci Resolve, After Effects, CENEMA 4D, Adobe Premiere Pro, Magix Vegas Pro, Blender. Free download Premium Templates. Graphics Design Templates Photoshop Psd, Adobe Illustrator, Corel Draw, Adobe InDesign, Power Point Infographics. Free download Premium WordPress Themes, HTML Templates" />
+    <meta property="og:title" content="Free download Premium WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free">
+
+    <meta property="og:type" content="WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free, Udemy courses free, Skillshare courses free, Pluralsight courses free, Linkedin courses free, Coursera courses free, Frontend Masters courses free, CodewithMosh courses free, ZeroToMastery courses free, Coding Ninjas courses free, Academind courses free, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses, DaVinci Resolve Motion Graphics Templates, After Effects Motion Graphics Templates, CENEMA 4D Motion Graphics Templates, Adobe Premiere Pro Motion Graphics Templates, Magix Vegas Pro Templates, Blender, Graphics Templates Photoshop Psd, Adobe Illustrator Graphics Templates , Corel Draw Graphics Templates , Adobe InDesign Graphics Templates , Power Point Infographics">
+    <meta property="og:url" content="www.allpcsolutions.net, allpcsolutions.net, allpcsolutions, www.allpcsolutions.net ">
+    
+           <!-- Favicon-->
+    <link rel="icon" href="{% static 'blog/images/favicon.png' %}"
+          type="image/gif" sizes="16x16">
+
+    <title>AllPCSolutions | {% block title %}{% endblock title %}</title>
+
+  {% block stylesheet %}
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css"
+              href="{%  static 'account/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css"
+              href="{%  static 'account/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css"
+              href="{%  static 'account/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css"
+              href="{%  static 'account/vendor/animate/animate.css'%}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css"
+              href="{%  static 'account/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{%  static 'account/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{%  static 'account/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{%  static 'account/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{%  static 'account/css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{%  static 'account/css/main.css' %}">
+    <!--===============================================================================================-->
+  {% endblock stylesheet %}
+
+  </head>
+
+  <body>
+    <div class="limiter">
+		<div class="container-login100" style="background-image: url('/static/account/images/bg-6.jpg');">
+            <div class="wrap-login100 p-t-30 p-b-50">
+
+            {% block messages %}
+                        {% if messages %}
+                            {% for message in messages %}
+                              <div class="text-center font-weight-bold alert alert-dismissible fade show
+                                   {% if message.level_tag == 'error' %}
+                                   alert-danger
+                                   {% else %}
+                                   alert-{{ message.tags }}
+                                   {% endif %}">
+                                {{ message }}
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+      {% endblock messages %}
+
+
+      {% block content %}
+
+      {% endblock content %}
+
+             </div>
+        </div>
+    </div>
+        <div id="dropDownSelect1"></div>
+
+  {% block script %}
+
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/bootstrap/js/popper.js' %}"></script>
+        <script src="{%  static 'account/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/daterangepicker/moment.min.js' %}"></script>
+        <script src="{%  static 'account/vendor/daterangepicker/daterangepicker.js'%}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{%  static 'account/js/main.js' %}"></script>
+
+  {% endblock script %}
+
+  </body>
+
+</html>

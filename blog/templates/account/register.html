@@ -1,0 +1,67 @@
+{% extends 'account/account_base.html' %}
+{% load static %}
+<meta charset="utf-8">
+<meta name="author" content="ALL PC Solutions">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="All PC Solutions - Download Free Resources To Unleash Your Creative Power ...! Amazing site to download free Premium and Paid Creative resources: softwares, plugins, VFX, Graphic Design, HTML templates, WordPress Themes Online Tutorials and much more ... Download Online Paid Course for free download from platforms like Udemy, Skillshare, Pluralsight, Linkedin, Coursera, Frontend Masters, CodewithMosh, ZeroToMastery, Coding Ninjas, Academind, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses. Free download free Windows OS, Mac Os Apps, Plugins and softwares. Free download Premium VFX or Motion Graphics Templates. Motion Graphics Templates DaVinci Resolve, After Effects, CENEMA 4D, Adobe Premiere Pro, Magix Vegas Pro, Blender. Free download Premium Templates. Graphics Design Templates Photoshop Psd, Adobe Illustrator, Corel Draw, Adobe InDesign, Power Point Infographics. Free download Premium WordPress Themes, HTML Templates" />
+<meta property="og:title" content="Free download Premium WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free">
+
+<meta property="og:type" content="WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free, Udemy courses free, Skillshare courses free, Pluralsight courses free, Linkedin courses free, Coursera courses free, Frontend Masters courses free, CodewithMosh courses free, ZeroToMastery courses free, Coding Ninjas courses free, Academind courses free, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses, DaVinci Resolve Motion Graphics Templates, After Effects Motion Graphics Templates, CENEMA 4D Motion Graphics Templates, Adobe Premiere Pro Motion Graphics Templates, Magix Vegas Pro Templates, Blender, Graphics Templates Photoshop Psd, Adobe Illustrator Graphics Templates , Corel Draw Graphics Templates , Adobe InDesign Graphics Templates , Power Point Infographics">
+<meta property="og:url" content="www.allpcsolutions.net, allpcsolutions.net, allpcsolutions, www.allpcsolutions.net ">
+
+<!----GOOGLE ADS SCRIPTS-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2597287362755797"
+crossorigin="anonymous"></script>
+{% block title %}
+
+    Register
+{% endblock title %}
+
+{% block content %}
+
+				<span class="login100-form-title p-b-41">
+					Register
+				</span>
+				<form action="{% url 'blog:register' %}" class="login100-form p-b-33 p-t-5"
+                      method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Username">
+						{{ register_form.username }}
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Email">
+						{{ register_form.email }}
+						<span class="focus-input100" data-placeholder="&#xe818;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						{{ register_form.password1 }}
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+						{{ register_form.password2 }}
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button type="submit" class="login100-form-btn">
+							Register
+						</button>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                      <a class="small text-primary" href="{% url 'blog:login' %}"
+                        >Already Have an Account!</a>
+                    </div>
+                    <div class="text-center font-weight-bold">
+                      <a class="small text-info" href="{% url 'blog:home' %}">
+                          Home
+                      </a>
+                    </div>
+				</form>
+
+
+{% endblock content %}

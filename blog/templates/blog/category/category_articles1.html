@@ -1,0 +1,176 @@
+{% extends 'blog/blog_base.html' %}
+{% load static %}
+<meta charset="utf-8">
+<meta name="author" content="ALL PC Solutions">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="All PC Solutions - Download Free Resources To Unleash Your Creative Power ...! Amazing site to download free Premium and Paid Creative resources: softwares, plugins, VFX, Graphic Design, HTML templates, WordPress Themes Online Tutorials and much more ... Download Online Paid Course for free download from platforms like Udemy, Skillshare, Pluralsight, Linkedin, Coursera, Frontend Masters, CodewithMosh, ZeroToMastery, Coding Ninjas, Academind, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses. Free download free Windows OS, Mac Os Apps, Plugins and softwares. Free download Premium VFX or Motion Graphics Templates. Motion Graphics Templates DaVinci Resolve, After Effects, CENEMA 4D, Adobe Premiere Pro, Magix Vegas Pro, Blender. Free download Premium Templates. Graphics Design Templates Photoshop Psd, Adobe Illustrator, Corel Draw, Adobe InDesign, Power Point Infographics. Free download Premium WordPress Themes, HTML Templates" />
+<meta property="og:title" content="Free download Premium WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free">
+
+<meta property="og:type" content="WordPress Themes, HTML Templates, themeforest, envato elements, Most Popular WP Template, elegantthemes, templatemonster, motionarray, VFX or Motion Graphics Templates, download Udemy courses free, Udemy courses free, Skillshare courses free, Pluralsight courses free, Linkedin courses free, Coursera courses free, Frontend Masters courses free, CodewithMosh courses free, ZeroToMastery courses free, Coding Ninjas courses free, Academind courses free, acloudguru, Linux Academy, Awwwards, CleanCoders, egghead, Newline, Pluralsight, Udacity, UltimateCourses, DaVinci Resolve Motion Graphics Templates, After Effects Motion Graphics Templates, CENEMA 4D Motion Graphics Templates, Adobe Premiere Pro Motion Graphics Templates, Magix Vegas Pro Templates, Blender, Graphics Templates Photoshop Psd, Adobe Illustrator Graphics Templates , Corel Draw Graphics Templates , Adobe InDesign Graphics Templates , Power Point Infographics">
+<meta property="og:url" content="www.allpcsolutions.net, allpcsolutions.net, allpcsolutions, www.allpcsolutions.net ">
+
+<!----GOOGLE ADS SCRIPTS-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2597287362755797"
+crossorigin="anonymous"></script>
+{% block title %}
+
+    Categories
+{% endblock title %}
+
+{{ category.name }}
+
+{% block content %}
+<!-- Start Blog Area -->
+<section class="blog-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+
+                {% if articles %}
+                    {% for article in articles %}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-blog-post-item">
+                            <div class="post-image">
+                                <a href="{{ article.get_absolute_url }}">
+                                    <img src="{{ article.image.url }}" alt="image">
+                                </a>
+                                <div style="background-color: rgb(255, 89, 0);" class="date">
+                                    <span>{{ article.date_updated }}</span>
+                                </div>
+                            </div>
+
+                            <div class="post-content">
+                                <span class="category">Posted By: {{ article.author }} | Category: {{ article.category }}</span>
+                                <span class="category">{{ article.read_time }} Min{{ article.read_time|pluralize }} Read | {{ article.views }} Views</span>
+
+                                <h3><a style="color: rgb(255, 89, 0) ;" href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+
+                                <p>{{ article.body|safe|truncatewords:20 }} </p>
+                                <a href="{{ article.get_absolute_url }}" class="details-btn">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                   <center><div class="alert alert-info"><b>No Articles</b></div></center>
+                {% endif %}
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% if is_paginated %}
+                        <div class="pagination-area text-center">
+                            {% if page_obj.has_previous %}
+                            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                            <a href="?page={{ page_obj.previous_page_number }}" class="prev page-numbers"><i class='bx bx-chevron-left'></i></a>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <a href="?page={{ num }}" class="page-numbers">{{ num }}</a>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <a href="?page={{ num }}" class="page-numbers">{{ num }}</a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" class="next page-numbers"><i class='bx bx-chevron-right'></i></a>
+                            <a class="btn btn-outline-info mb-4"
+                               href="?page={{ page_obj.paginator.num_pages }}">Last
+                            </a>
+                            {% endif %}
+
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <section class="widget widget_search">
+                        <form method="get" action="{% url 'blog:article_search_list_view' %}" class="search-form">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input type="text" name="q" class="search-field" placeholder="Search for posts ...">
+                            </label>
+                            <button type="submit"><i class="bx bx-search-alt"></i></button>
+                        </form>
+                    </section>
+
+                    <section class="widget widget_cognizance_posts_thumb">
+                        <h3 class="widget-title"></h3>
+
+                        <article class="item">
+                            <a href="#" class="thumb">
+                                <span class="fullimage cover bg1" role="img"> <img src=""></span>
+                            </a>
+                            <div class="info">
+                                <span></span>
+                                <h4 class="title usmall"><a href=""></a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+
+
+                    </section>
+
+                    <section class="widget widget_categories">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul>
+                            {% for category in categories %}
+                            <li><a href="{{ category.get_absolute_url }}">{{ category.name }}<span class="post-count"></span></a></li>
+                            {% endfor %}
+                        </ul>
+
+                    </section>
+
+                    <section class="widget widget_tag_cloud">
+                        <h3 class="widget-title"></h3>
+
+                        <div class="tagcloud">
+
+                        </div>
+                    </section>
+
+                    <section class="widget widget_instagram">
+                        <h3 class="widget-title"></h3>
+
+                        <ul>
+
+                        </ul>
+                    </section>
+                    <section class="widget widget_contact">
+                        <div class="text">
+                            <a href="https://t.me/allpcsolutions">
+                            <div class="icon">
+                                <i class='fa fa-telegram'></i>
+                            </div>
+                           </a>
+                            <span>Our Telegram Channel</span>
+                            <a href="https://t.me/allpcsolutions">Get Daily Updates</a>
+                            <a href="https://t.me/allpcsolutions">Ask Questions</a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

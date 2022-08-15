@@ -1,0 +1,60 @@
+
+{% extends 'blog/blog_base.html' %}
+{% load static %}
+
+
+{% block title %}
+
+    Home
+{% endblock title %}
+
+{% block content %}
+
+
+<section class="projectsList">
+    <div class="container">
+    <div class="grid grid--three">
+
+        {% if categories %}
+        {% for category in categories %}
+        <div class="column">
+            <div class="card project">
+                <a href="{{ category.get_absolute_url }}" class="project">
+                <img class="project__thumbnail" src="{{ category.image.url }}" alt="project thumbnail" />
+                <div class="card__body">
+                    <a href="{{ category.get_absolute_url }}">
+                    <h3 style="color:blue ;" class="project__title">{{ category.name }}</h3>
+                    </a>                 
+                    <p><a class="project__author" href="#">Updated: {{ category.date_updated }}</a></p>
+                    <p class="project--rating">
+                    <span style="font-weight: bold;">{{ category.description }}
+                    </p>
+                    <div class="project__tags">
+                    <span class="tag tag--pill tag--main">
+                        <a href="{{ category.get_absolute_url }}">
+                        <small style="color: rgb(255, 255, 255);">Read More...</small>
+                        </a>
+                    </span>               
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+            <center><div class="alert alert-warning"><b>No Categories</b></div></center>
+        {% endif %}
+    </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

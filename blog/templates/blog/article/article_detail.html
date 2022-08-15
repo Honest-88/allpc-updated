@@ -1,0 +1,190 @@
+{% extends 'blog/blog_base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'dev/images/favicon.ico' %}" type="image/x-icon" />
+  <!-- Icon - IconMonster -->
+  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+  <!-- Mumble UI -->
+  <link rel="stylesheet" href="{% static 'dev/uikit/styles/uikit.css' %}" />
+  <!-- Dev Search UI -->
+  <link rel="stylesheet" href="{% static 'dev/styles/app.css' %}" />
+
+{% block title %}
+
+  {{ article.title }}
+{% endblock %}
+
+{% block content %}
+
+</head>
+
+<body>
+    <br><br>
+  <!-- Main Section -->
+  <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 style="color: rgb(37, 6, 212);" class="singleProject__subtitle">Spread The Love - Share:</h3>
+          <div class="singleProject__toolStack">
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}"class="default-btn" class="whatsapp" target="_blank"><i class="im im-whatsapp"></i></a></small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text={{ article.title }}" class="default-btn" class="telegram" target="_blank"><i class="fa fa-telegram fa-2x"></i></a></small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"class="default-btn" class="facebook" target="_blank"><i class="im im-facebook"></i></a></small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"class="default-btn" class="linkedin" target="_blank"><i class="im im-linkedin"></i></a></small>
+            </span>
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="http://twitter.com/share?text={{ article.title }}. &url={{ request.build_absolute_uri }}"class="default-btn" class="twitter" target="_blank"><i class="im im-twitter"></i></a></small>
+            </span>
+
+
+            <h3 style="color: rgb(37, 6, 212);" class="singleProject__subtitle">Most Recent Posts</h3>
+            {% if related_articles %}
+            {% for related_article in related_articles %}
+            <article class="item">
+                <div class="info">
+                    <p style="color: rgb(182, 4, 4);" ><strong>{{ related_article.date_updated }}</strong></p>
+                    <h6 class="title usmall"><a href="{{ related_article.get_absolute_url }}">{{ related_article.title }}</a></h6>
+                </div> 
+                <a href="{{ related_article.get_absolute_url }}" class="thumb">
+                    <span class="fullimage cover bg1" role="img"> <img src="{{ related_article.image.url }}" width="50" height="50"></span>
+                </a>
+                      
+            </article>
+                
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-warning"><b>No Related Articles</b></div>
+            {% endif %}
+
+            <h3 style="color: rgb(37, 6, 212);" class="singleProject__subtitle">Tags</h3>
+
+            {% for tag in article.tags.all %}
+            <span class="tag tag--pill tag--sub tag--lg">
+                <a href="{% url 'blog:tag_articles' tag_name=tag.name %}">
+                    <small>{{ tag.name }}</small>
+                </a>
+            </span>
+            {% endfor %}
+          </div>
+          <a class="singleProject__liveLink"  href="https://t.me/allpcsolutions" target="_blank"><i class='fa fa-telegram'></i>Telegram - Get Daily Updates
+          </a>
+        </div>
+        <div class="column column--2of3">
+          <img class="singleProject__preview" src="{{ article.image.url }}" alt="portfolio thumbnail" />
+          <a href="#" class="singleProject__developer">Posted By: {{ article.author.username }}, On {{ article.date_published.date }} </a>
+          <br>
+          <a href="">
+          <li>
+            <i class='fa fa-eye'></i>
+           <br />
+           <a href="#">{{ article.views }} view{{ article.views|pluralize }}</a>
+            <a href="#">{{ article.comments.count }} comment{{ article.comments.count|pluralize }}</a>  
+        </li>
+        <li>
+            <i class='bx bx-calendar'></i>
+            <span></span>
+            <a href="#">{{ article.read_time }} min{{ article.read_time|pluralize }} read</a>
+            <a href="#">{{ article.count_words }} word{{ article.count_words|pluralize }}</a>
+        </li>
+    </a>
+          <h2 style="color: blue;" class="singleProject__title">{{ article.title }}</h2>  
+          <h3 style="color: blue;" class="singleProject__subtitle">Category: {{ article.category }}</h3>
+          <div class="singleProject__info">
+            <p style="color: black;" >{{ article.body | safe }}</p>
+          </div>
+
+            {% if article.image_credit %}
+            <figcaption class="mt-2 text-center image-caption">
+                (Image Credit: {{ article.image_credit}})
+            </figcaption>
+            {% endif %}
+
+            <div class="option-item">
+
+                <h4 style="color: blue;">MAKE SURE YOU WATCH THIS VIDEO ON HOW TO DOWNLOAD FROM OUR WEBSITE OTHERWISE YOU WILL THINK IT'S FAKE ...!!</h4>
+                <a href="https://www.youtube.com/watch?v=897DMRDnAlQ" class="w3-button w3-round-xlarge w3-blue ">Watch How to Download From Our Site</a>
+               
+                <h2 style="color: rgb(189, 5, 5);">Download From These File Hosters:</h2>
+
+                <a href="#" class="w3-button w3-round-xlarge w3-orange">Zip Password: 123</a>
+                
+                {% if article.filelink_one %}
+                <a href="{{ article.filelink_one }}">
+                    <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">{{ article.File_hoster_name1 }}</button>
+                </a>
+                {% endif %}
+
+                {% if article.filelink_two %}
+                <a href="{{ article.filelink_two }}">
+                    <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">{{ article.File_hoster_name2 }}</button>
+                </a>
+                {% endif %}
+
+                {% if article.filelink_three %}
+                <a href="{{ article.filelink_three }}">
+                    <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">{{ article.File_hoster_name3 }}</button>
+                </a>
+                {% endif %}
+
+                {% if article.filelink_four %}
+                <a href="{{ article.filelink_four }}">
+                    <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">{{ article.File_hoster_name4 }}</button>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="input-group mb-3 input-group-lg">   
+            <h3 style="color: blue;" class="singleProject__subtitle">Leave A Comment</h3>
+            <h4 style="color: blue;" class="project--rating">
+                This Post Has ({{ article.comments.count }}) Comments
+            </h4>
+
+            <form class="form" action="{% url 'blog:comment_create' article.slug %}" method="post">
+                {% csrf_token %}
+                <div class="form__field">
+                  <label for="formInput#textarea"></label>
+                  {{ comment_form }}
+                  </div>                                                                                   
+                <p class="form-submit">
+                    <input type="submit" id="form-submit" class="w3-button w3-blue w3-border w3-border-orange w3-round-large" value="Post A Comment">
+                </p>
+             
+            </form>
+           
+            <br><br>
+            <a href="{% url 'blog:article_comments' article.slug %}">
+              <button class="w3-button w3-blue w3-border w3-border-orange w3-round-large">Click To Load ({{ article.comments.count }}) Comments You Can Read</button>
+          </a>
+
+            <div class="commentList">
+                
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>
+
+
+{% endblock content %}
